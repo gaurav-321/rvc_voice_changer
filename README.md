@@ -1,29 +1,135 @@
-# Real-Time Voice Changer with RVC (Python)
+# RVC Voice Changer
 
-This Python script provides a simple way to change your voice in real-time using RVC (Retrieval-based Voice Conversion) technology.
+🚀 **Project Title:** RVC Voice Changer
 
-## Features
+✨ **Description:** RVC Voice Changer is a Python program that leverages Retrieval-based Voice Conversion (RVC) technology to provide real-time voice change capabilities. It allows users to switch between different character profiles and output the transformed voice through a virtual audio device.
 
-* **Real-time Voice Change:**  Press 'V' to toggle voice recording and transformation.
-* **Multiple Character Profiles:** Cycle through different voice profiles (e.g., Peter, Trump, Neon) by pressing 'L'.
-* **Virtual Audio Output:**  Output the changed voice to a specific audio device for easy integration with other applications.
+---
 
-## Requirements
+## 🚀 Features
+- Real-time voice transformation based on selected character profiles.
+- User-friendly interface for recording and switching voice profiles.
+- Output of transformed voice through a virtual audio device.
+- Detailed logs for error tracking and debugging.
 
-* **RVC Environment:** Install RVC and its dependencies. Detailed instructions can be found in the RVC documentation.
-* **Python Libraries:**  `pyaudio`, `wave`, `pydub`, `rvc_python`, `sounddevice`, `soundfile`, `keyboard`, `pynput`, `threading`
-* Install them using `pip install pyaudio wave pydub rvc_python sounddevice soundfile keyboard pynput` 
+---
 
-## Usage
+## ⛓ Installation
 
-1. **Run the Script:**
+To set up RVC Voice Changer, follow these steps:
+
+1. **Clone the repository:**
    ```bash
-   python voice_changer.py
+   git clone https://github.com/gag3301v/rvc_voice_changer.git
+   cd rvc_voice_changer
    ```
 
-2. **Voice Change:** Press and hold 'V' to record and change your voice. Release 'V' to stop recording and hear the transformed audio.
-3. **Change Character:** Press 'L' to cycle to the next character profile. The current character's name will be printed to the console.
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Disclaimer
+---
 
-This project is intended for experimentation and entertainment purposes. The use of voice transformation technology may be restricted in certain situations, so please use it responsibly. 
+## 📦 Usage
+
+### VoiceChanger Example
+
+```python
+from voicechanger import VoiceChanger, CharacterProfileManager
+
+# Initialize the VoiceChanger and CharacterProfileManager
+voice_changer = VoiceChanger()
+profile_manager = CharacterProfileManager()
+
+# Load a character profile
+profile_manager.load_profile("character1")
+
+# Start recording and transforming voice
+voice_changer.start_recording_and_transform(profile_manager.current_profile)
+```
+
+### rvc_test.py Example
+
+```python
+from rvc_test import record_audio, change_pitch, play_audio
+
+# Record audio from the default input device
+recorded_audio = record_audio()
+
+# Change the pitch of the recorded audio
+processed_audio = change_pitch(recorded_audio, semitone_shift=2)
+
+# Play the processed audio through a virtual output device
+play_audio(processed_audio)
+```
+
+---
+
+## 🔧 Configuration
+
+- **Environment Variables:**
+  - `RVC_API_KEY`: API key for accessing RVC services (if required).
+
+- **Config Files:**
+  - `config.ini`: Contains settings for voice profiles and other configurations.
+
+---
+
+## 🧪 Tests
+
+To run tests, execute the following command:
+
+```bash
+pytest tests/
+```
+
+Ensure you have pytest installed:
+```bash
+pip install pytest
+```
+
+---
+
+## 📁 Project Structure
+
+```
+rvc_voice_changer/
+├── README.md
+├── requirements.txt
+├── voicechanger/
+│   ├── __init__.py
+│   ├── VoiceChanger.py
+│   └── CharacterProfileManager.py
+└── rvc_test.py
+```
+
+---
+
+## 🙌 Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1. **Fork the repository.**
+2. **Create a new branch:**
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. **Make your changes and commit them:**
+   ```bash
+   git commit -m 'Add some AmazingFeature'
+   ```
+4. **Push to the branch:**
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+5. **Open a pull request.**
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+[![Python Version](https://img.shields.io/pypi/pyversions/rvc_voice_changer)](https://pypi.org/project/rvc_voice_changer/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
